@@ -3,6 +3,15 @@ plugins {
 }
 
 android {
+	signingConfigs {
+		release {
+			storeFile file(RELEASE_STORE_FILE)
+			storePassword RELEASE_STORE_PASSWORD
+			keyAlias RELEASE_KEY_ALIAS
+			keyPassword RELEASE_KEY_PASSWORD
+		}
+	}
+
 	compileSdk 32
 
 	defaultConfig {
@@ -11,6 +20,11 @@ android {
 		targetSdk 32
 		versionCode 1
 		versionName "1.0"
+	}
+	buildTypes {
+		release {
+			signingConfig signingConfigs.release
+		}
 	}
 }
 
